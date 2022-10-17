@@ -13,11 +13,11 @@ public class Car
         this.musicPlayer = musicPlayer;
     }
 
-    @Override
-    public String toString()
-    {
-        return "Car " +
-                 id +
-                " " + musicPlayer.playMusic();
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return "Car " +
+//                 id +
+//                "";
+//    }
 }

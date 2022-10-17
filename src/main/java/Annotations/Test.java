@@ -1,6 +1,6 @@
 package Annotations;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Test
 {
@@ -8,18 +8,13 @@ public class Test
 
     {
         // Спринг прочитал аппликейшн котнтекст, после чего можно вызвать бин
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                "applicationContext.xml"
-        );
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
-        ClassicalMusic classicalMusic = context.getBean("classicalMusic", ClassicalMusic.class);
-        System.out.println(classicalMusic.getSong());
+//        ClassicalMusic classicalMusic = context.getBean("classicalMusic", ClassicalMusic.class);
+//        System.out.println(classicalMusic.getSong());
 
-        PopMusic popMusic = context.getBean("popMusic", PopMusic.class);
-        System.out.println(popMusic.getSong());
-
-        MusicPlayer musicPlayer = new MusicPlayer(popMusic);
-        musicPlayer.playMusic();
+          MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+        System.out.println(musicPlayer.playMusic(MusicEnum.POP));
 
         context.close();
     }
