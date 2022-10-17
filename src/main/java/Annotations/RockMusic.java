@@ -7,15 +7,17 @@ import javax.annotation.PreDestroy;
 @Component("rockMusic")
 public class RockMusic implements Music
 {
+
     @PostConstruct
     public void doMyinit(){
-        System.out.println("Doing my initialization");
+        System.out.println("RockMusicClass: Doing my initialization");
     }
 
     @PreDestroy
     public void doMyDestroy(){
-        System.out.println("Doing my destroyment");
+        System.out.println("RockMusicClass: Doing my destroyment");
     }
+
 
 
     @Override
