@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.Random;
 
 @Component
 @Scope()
@@ -14,8 +16,11 @@ public class MusicPlayer {
     private String name;
     @Value("${musicPlayer.volume}")
     private int volume;
-    private final Music music1;
-    private final Music music2;
+
+
+    private final Music rockMusic;
+    private final ClassicalMusic classics;
+    private final PopMusic popMusic;
 
     public String getName()
     {
@@ -26,17 +31,24 @@ public class MusicPlayer {
     {
         return volume;
     }
-
-    public MusicPlayer(@Qualifier("rockMusic") Music music1, @Qualifier("classicalMusic") Music music2)
+    @Autowired
+    public MusicPlayer(@Qualifier("rockMusic") Music rockMusic, ClassicalMusic classics, PopMusic popMusic)
     {
-        this.music2 = music2;
-        this.music1 = music1;
+        this.classics = classics;
+        this.rockMusic = rockMusic;
+        this.popMusic = popMusic;
     }
 
-    public String playMusic() {
-        System.out.println("Playing: " + music1.getSong());
-        System.out.println("Playing: " + music2.getSong());
-        return "Playing: " + music1.getSong()+", "+ music2.getSong();
-
+    public String playMusic(Enum MusicEnum) {
+        if (MusicEnum.name().equals("POP")){
+            String randomTrack = popMusic.getSongList()[new Random().nextInt(popMusic.getSongList().length)];
+            return randomTrack;
         }
+        else{
+            String randomTrack = classics.getSongList()[new Random().nextInt(classics.getSongList().length)];
+            return randomTrack;
+        }
+
+    }
+
 }
