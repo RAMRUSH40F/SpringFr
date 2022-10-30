@@ -6,6 +6,7 @@ public class ClassicalMusic implements Music
 {
     private final String[] list = {"Hungarian Rhapsody", "Year Seasons", "Botichelli"};
 
+
     @Override
     public String getSong() {
         return "Hungarian Rhapsody" ;
