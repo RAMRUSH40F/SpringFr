@@ -11,7 +11,6 @@ public class Test
         int result = 1/b;
         System.out.println(b);
         System.out.println(result);
-
         // Спринг прочитал аппликейшн котнтекст, после чего можно вызвать бин
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
