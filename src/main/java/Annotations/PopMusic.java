@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 @Component("popMusic")
 public class PopMusic implements Music
 {
+
     private final String[] list = {"Metallica", "40 miles", "Zavtra Broshu"};
     private String name = "Despacito";
 
