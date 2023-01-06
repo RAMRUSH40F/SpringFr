@@ -3,51 +3,44 @@ package Annotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
 import java.util.Random;
 
 @Component
-@Scope()
 public class MusicPlayer {
-    @Value("${musicPlayer.name}")
+    @Value("${musicPlayer.name: Undefined}")
     private String name;
-    @Value("${musicPlayer.volume}")
-    private int volume;
+    @Value("${musicPlayer.volume: Undefined}")
+    private int    volume;
 
-
-    private final Music rockMusic;
+    private final Music          rockMusic;
     private final ClassicalMusic classics;
-    private final PopMusic popMusic;
+    private final PopMusic       popMusic;
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public int getVolume()
-    {
+    public int getVolume() {
         return volume;
     }
+
     @Autowired
-    public MusicPlayer(@Qualifier("rockMusic") Music rockMusic, ClassicalMusic classics, PopMusic popMusic)
-    {
+    public MusicPlayer(@Qualifier("rockMusic") Music rockMusic, ClassicalMusic classics, PopMusic popMusic) {
         this.classics = classics;
         this.rockMusic = rockMusic;
         this.popMusic = popMusic;
     }
 
     public String playMusic(Enum MusicEnum) {
-        if (MusicEnum.name().equals("POP")){
-            String randomTrack = popMusic.getSongList()[new Random().nextInt(popMusic.getSongList().length)];
-            return randomTrack;
+        String randomTrack;
+        if (MusicEnum.name().equals("POP")) {
+            randomTrack = popMusic.getSongList()[new Random().nextInt(popMusic.getSongList().length)];
+        } else {
+            randomTrack = classics.getSongList()[new Random().nextInt(classics.getSongList().length)];
         }
-        else{
-            String randomTrack = classics.getSongList()[new Random().nextInt(classics.getSongList().length)];
-            return randomTrack;
-        }
+        return randomTrack;
 
     }
 
