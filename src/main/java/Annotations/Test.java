@@ -7,8 +7,8 @@ public class Test {
         // Спринг прочитал аппликейшн котнтекст, после чего можно вызвать бин
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
-//        ClassicalMusic classicalMusic = context.getBean("classicalMusic", ClassicalMusic.class);
-//        System.out.println(classicalMusic.getSong());
+        ClassicalMusic classicalMusic = context.getBean("classicalMusic", ClassicalMusic.class);
+        System.out.println(classicalMusic.getSong());
 
         MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
         System.out.println(musicPlayer.playMusic(MusicEnum.POP));
