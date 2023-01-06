@@ -1,7 +1,6 @@
 package Annotations;
 
-public interface Music
-{
+public interface Music {
     String getSong();
 
 }

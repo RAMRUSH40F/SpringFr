@@ -1,9 +1,6 @@
 package Annotations;
 
-public enum MusicEnum
-{
+public enum MusicEnum {
     CLASSICAL,
     POP,
-
-
 }

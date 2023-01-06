@@ -9,9 +9,9 @@ import java.util.Random;
 
 @Component
 public class MusicPlayer {
-    @Value("${musicPlayer.name: Undefined}")
+    @Value("${musicPlayer.name:Undefined}")
     private String name;
-    @Value("${musicPlayer.volume: Undefined}")
+    @Value("${musicPlayer.volume:50}")
     private int    volume;
 
     private final Music          rockMusic;
